@@ -1,0 +1,22 @@
+Finetuning limitations:
+    1. As models get larger and larger, full fine-tuning becomes infeasible to train on consumer hardware.
+    2. In addition, storing and deploying fine-tuned models independently for each downstream task becomes very expensive, because fine-tuned models are the same size as the original pretrained model.
+
+
+How does PEFT work?
+    1. PEFT approaches only fine-tune a small number of model params while freezing most of the params of pretrained LLMs, thereby greatly decreasing the computational and storage costs.
+    2. Adapts to downstream task while reducing the risk of catastrophic forgetting
+    3. Prevents overfitting
+
+Types of PEFT methods;
+    1. Prompt Tuning, Prefix Tuning, Adaptation Prompt
+    2. LoRA, QLora, AdaLoRA, LoftQ, LoHA, LoKR
+    3. IA^3, Bottleneck Adapters
+
+Prompt learning PEFT techniques:
+    Soft Prompt based methods: Maps the problem of finding discrete hard prompt to a continuous soft prompt.
+        a. Prompting in zero and few shots have shown remarkable performance:
+            However, when there are lot of training examples available, optimizing discrete natural language prompts becomes challenging.
+
+        b. Soft or Continuous prompt methods overcome the above limitation
+            Instead of you optimizing the discrete natural language prompt, learn them by introducing trainable prompt tokens or prefix token and prepending them to input embeddings or intermediate hidden states during fine-tuning
