@@ -1,0 +1,18 @@
+Model Evaluations:
+
+1. Human Evaluation: This is the Gold standard
+    They provide the true way to properly gauge the model capabilities
+    Humans evaluate the model response and score them
+    Basis the score an Elo rating (similar to chess) is given to the model
+    These Elo rating can be used to compare the models and create a leader board
+
+2. Model Evaluation: Using SOTA models such as GPT-4 to evaluate the performance of other models
+    The models can be skewed towards models trained with data generated using the model using the evaluation.
+
+3. LLM Benchmarks:
+    A very noisy proxy.
+    Only useful to gauge generic capabilities of the models
+    e.g: HellaSwag, MMLU (Massive Multitask Language Understanding), TruthfulQA, Winogrande, etc
+
+4. Task Specific Testing Suite:
+    Creating specific tasks which are specifically aligned with the problem at hand and targeting specific business requirements
