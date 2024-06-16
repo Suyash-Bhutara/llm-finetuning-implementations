@@ -1,0 +1,42 @@
+Training Loop:
+
+Dataset ---->   Forward
+                    |
+                Loss Computation
+                    |
+                Backpropagation
+                    |
+                Updating weights
+
+
+Things to consider:
+1. Hyperparameters
+2. Saving checkpoints at regular intervals
+3. Evaluation of evaluation dataset
+4. Compute requirements and hardware
+5. Tracking experiments
+
+
+code example:
+
+python
+```
+for step, (inputs, labels) in enumerate(train_dataloader):
+    # forward
+    predictions = model(inputs)
+    # loss computation
+    loss = loss_function(predictions, labels)
+    # backpropagation
+    loss.backward()
+    # updating weights and restting gradients
+    optimizer.step()
+    optimizer.zero_grad()
+```
+
+Huggingface has two APIs:
+1. Trainer API: 
+    Just plug in the model and datasets and call `trainer.train()`. 
+    No need to write the boilerplate PyTorch loops. 
+2. Accelerate:
+    Training and inference at scale made simple, efficient and adaptable.
+    More control on PyTorch loops with lesser boilerplate code.
