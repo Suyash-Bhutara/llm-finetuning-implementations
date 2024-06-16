@@ -1,0 +1,30 @@
+Recipe to get SOTA:
+- Pretrain on web-scale data
+- Finetune on downstream task
+
+Scaling Laws:
+- Larger the model better the performance
+
+Limitations of full fine-tuning approaches:
+- Compute
+- Storage
+
+How to Finetune very large models on consumer hardware?
+- What makes the model large:
+    a. Number of params
+    b. Precision of the datatype
+
+    For eg Mistral-7B with 7 billion params:
+        FP32            ~28GB
+        FP16/BF16       ~14GB
+        INT8            ~7GB
+        INT4/NF4        <4GB
+
+    Breakdown of Mistral-7B in mixed precision using Adams Optimizer:
+    Weights - 2 bytes/param
+    Gradient - 2 bytes/param
+    Optimizer - 4 bytes/param (FP32 copy) + 8 bytes/param (momentum & variance estimates)
+
+    Total training cost: 16 bytes/param * 7 billion params = 112GB
+    
+    Note: this cost does not include intermediate activation states.
